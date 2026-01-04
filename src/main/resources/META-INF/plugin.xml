@@ -1,0 +1,17 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.xiaomi.activedot</id>
+    <name>Active Tab Dot</name>
+    <vendor>Xiaomi</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.xiaomi.activedot.settings.ActiveDotSettingsState"/>
+        <postStartupActivity implementation="com.xiaomi.activedot.startup.ActiveDotStartupActivity"/>
+        <applicationConfigurable parentId="appearance" instance="com.xiaomi.activedot.settings.ActiveDotSettingsConfigurable" id="com.xiaomi.activedot.settings.ActiveDotSettingsConfigurable" displayName="Active Tab Dot"/>
+        <fileEditorManagerListener implementation="com.xiaomi.activedot.listeners.ActiveDotTabListener"/>
+    </extensions>
+</idea-plugin>

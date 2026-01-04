@@ -1,0 +1,23 @@
+# Gradle files
+.gradle
+build/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Local properties
+local.properties
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IntelliJ Platform files
+.intellijPlatform/
