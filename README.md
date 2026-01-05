@@ -4,7 +4,9 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 
+<!-- Plugin description -->
 A simple IntelliJ IDEA plugin that displays a colored dot on the active editor tab, making it easier to quickly identify your current file among multiple open tabs.
+<!-- Plugin description end -->
 
 ## Features
 
@@ -49,7 +51,7 @@ This project is a Kotlin-based Gradle project for the IntelliJ Platform.
 ### Requirements
 
 - JDK 17+
-- Gradle 8.5+
+- Gradle 8.14+
 - IntelliJ IDEA
 
 ### Key Commands
@@ -74,4 +76,4 @@ This project is a Kotlin-based Gradle project for the IntelliJ Platform.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE) file for details.

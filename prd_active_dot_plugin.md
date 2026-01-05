@@ -72,7 +72,7 @@ After installation:
 
 - JDK 17+
 - Kotlin 1.9+
-- Gradle 8.5+
+- Gradle 8.14+
 
 ### Build
 
@@ -108,4 +108,4 @@ You can customize the color through Settings → Tools → Active Tab Indicator.
 
 ## License
 
-MIT License
+Apache-2.0 License
