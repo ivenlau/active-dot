@@ -18,6 +18,10 @@ class ActiveDotUI(private val project: Project) : JComponent() {
         isOpaque = false
     }
 
+    override fun contains(x: Int, y: Int): Boolean {
+        return false
+    }
+
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
 
