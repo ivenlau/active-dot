@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Dot Size customization**: Adjust the indicator size between 3-10 pixels in settings.
+- **Position Offset controls**: Fine-tune dot position with horizontal (0-10px) and vertical (-10 to +10px) offset adjustments.
+
+## [1.0.3] - 2026-01-05
+
 ### Changed
 - Update for compatibility with IntelliJ IDEA 2023.2 and above.
 

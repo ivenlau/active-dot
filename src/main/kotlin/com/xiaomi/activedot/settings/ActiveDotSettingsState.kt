@@ -14,6 +14,9 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 class ActiveDotSettingsState : PersistentStateComponent<ActiveDotSettingsState> {
 
     var dotColor: String = "ff0000"
+    var dotSize: Int = 6
+    var offsetX: Int = 6
+    var offsetY: Int = 0
 
     override fun getState(): ActiveDotSettingsState {
         return this

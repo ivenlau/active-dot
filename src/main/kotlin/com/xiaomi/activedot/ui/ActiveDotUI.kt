@@ -46,9 +46,10 @@ class ActiveDotUI(private val project: Project) : JComponent() {
             val dotColor = Color.decode("#" + settings.dotColor)
             g2d.color = dotColor
 
-            val dotSize = 6
-            val x = location.x + 6
-            val y = location.y + tabLabel.height / 2 - dotSize / 2
+            // 使用配置的圆点大小和位置偏移
+            val dotSize = settings.dotSize
+            val x = location.x + settings.offsetX
+            val y = location.y + tabLabel.height / 2 - dotSize / 2 + settings.offsetY
             g2d.fillOval(x, y, dotSize, dotSize)
         } finally {
             g2d.dispose()
