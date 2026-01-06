@@ -7,6 +7,8 @@ import com.intellij.ui.tabs.JBTabs
 import com.xiaomi.activedot.settings.ActiveDotSettingsState
 import java.awt.Color
 import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.RenderingHints
 import javax.swing.JComponent
 import javax.swing.SwingUtilities
 
@@ -34,12 +36,20 @@ class ActiveDotUI(private val project: Project) : JComponent() {
 
         val location = SwingUtilities.convertPoint(tabLabel.parent, tabLabel.location, layeredPane)
 
-        val g2d = g.create()
+        val g2d = g.create() as? Graphics2D ?: return
         try {
-            g2d.color = Color.decode("#" + settings.dotColor)
+            // 开启抗锯齿和高质量渲染
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY)
+            g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE)
+
+            val dotColor = Color.decode("#" + settings.dotColor)
+            g2d.color = dotColor
+
+            val dotSize = 6
             val x = location.x + 5
-            val y = location.y + tabLabel.height / 2 - 3
-            g2d.fillOval(x, y, 6, 6)
+            val y = location.y + tabLabel.height / 2 - dotSize / 2
+            g2d.fillOval(x, y, dotSize, dotSize)
         } finally {
             g2d.dispose()
         }

@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Replaced internal API usage (`JBEditorTabs`) with public API (`JBTabs`) to ensure long-term compatibility.
+- Replaced internal API usage with public API to ensure long-term compatibility.
+- Enhanced dot rendering with anti-aliasing for smoother, vector-quality appearance.
 
 ## [1.0.1] - 2026-01-05
 
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2026-01-04
 
 ### Added
+
 - Initial release of the Active Tab Dot plugin.
 - Displays a colored dot on the active editor tab.
 - Customizable indicator color.
