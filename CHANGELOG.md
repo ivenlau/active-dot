@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Replaced internal API usage (`JBEditorTabs`) with public API (`JBTabs`) to ensure long-term compatibility.
+
+## [1.0.1] - 2026-01-05
+
 ### Fixed
 - Mouse cursor now behaves correctly and is no longer stuck in the pointer state.
 

@@ -3,7 +3,7 @@ package com.xiaomi.activedot.ui
 
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx
 import com.intellij.openapi.project.Project
-import com.intellij.ui.tabs.impl.JBEditorTabs
+import com.intellij.ui.tabs.JBTabs
 import com.xiaomi.activedot.settings.ActiveDotSettingsState
 import java.awt.Color
 import java.awt.Graphics
@@ -27,7 +27,7 @@ class ActiveDotUI(private val project: Project) : JComponent() {
 
         val fileEditorManager = FileEditorManagerEx.getInstanceEx(project)
         val currentWindow = fileEditorManager.currentWindow ?: return
-        val tabs = currentWindow.tabbedPane.component as? JBEditorTabs ?: return
+        val tabs = currentWindow.tabbedPane.component as? JBTabs ?: return
         val selectedTab = tabs.selectedInfo ?: return
         val tabLabel = tabs.getTabLabel(selectedTab) ?: return
         val layeredPane = this.parent ?: return
