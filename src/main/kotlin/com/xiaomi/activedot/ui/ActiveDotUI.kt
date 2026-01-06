@@ -47,7 +47,7 @@ class ActiveDotUI(private val project: Project) : JComponent() {
             g2d.color = dotColor
 
             val dotSize = 6
-            val x = location.x + 5
+            val x = location.x + 6
             val y = location.y + tabLabel.height / 2 - dotSize / 2
             g2d.fillOval(x, y, dotSize, dotSize)
         } finally {

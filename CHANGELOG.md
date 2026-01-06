@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- Update for compatibility with IntelliJ IDEA 2023.2 and above.
+
+## [1.0.2] - 2026-01-05
+
+### Changed
 - Replaced internal API usage with public API to ensure long-term compatibility.
 - Enhanced dot rendering with anti-aliasing for smoother, vector-quality appearance.
 

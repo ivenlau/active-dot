@@ -1,6 +1,7 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import java.util.*
 
 plugins {
     id("java") // Java support
@@ -15,8 +16,14 @@ group = providers.gradleProperty("pluginGroup").get()
 version = providers.gradleProperty("pluginVersion").get()
 
 // Set the JVM language level used to build the project.
+// Use Java 17 for compatibility with IntelliJ IDEA 2023.2+
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(17)
+}
+
+tasks.withType<JavaCompile> {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
 }
 
 // Configure project's dependencies
