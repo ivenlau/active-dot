@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add logo icon.
+
+## [1.0.4] - 2026-01-05
+
+### Added
 - **Dot Size customization**: Adjust the indicator size between 3-10 pixels in settings.
 - **Position Offset controls**: Fine-tune dot position with horizontal (0-10px) and vertical (-10 to +10px) offset adjustments.
 
