@@ -1,9 +1,9 @@
-
 package com.xiaomi.activedot.ui
 
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx
 import com.intellij.openapi.project.Project
 import com.intellij.ui.tabs.JBTabs
+import com.xiaomi.activedot.service.BreathingEffectService
 import com.xiaomi.activedot.settings.ActiveDotSettingsState
 import java.awt.Color
 import java.awt.Graphics
@@ -15,9 +15,19 @@ import javax.swing.SwingUtilities
 class ActiveDotUI(private val project: Project) : JComponent() {
 
     private val settings = ActiveDotSettingsState.getInstance()
+    private val breathingService = BreathingEffectService.getInstance()
+    private var currentBreathingColor: Color? = null
+
+    private val breathingListener = object : BreathingEffectService.Listener {
+        override fun onBreathingColorChanged(color: Color?) {
+            currentBreathingColor = color
+            repaint()
+        }
+    }
 
     init {
         isOpaque = false
+        breathingService.addListener(breathingListener)
     }
 
     override fun contains(x: Int, y: Int): Boolean {
@@ -38,15 +48,16 @@ class ActiveDotUI(private val project: Project) : JComponent() {
 
         val g2d = g.create() as? Graphics2D ?: return
         try {
-            // 开启抗锯齿和高质量渲染
+            // Enable anti-aliasing and high quality rendering
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
             g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY)
             g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE)
 
-            val dotColor = Color.decode("#" + settings.dotColor)
+            // Use breathing color if enabled, otherwise use the configured dot color
+            val dotColor = currentBreathingColor ?: Color.decode("#" + settings.dotColor)
             g2d.color = dotColor
 
-            // 使用配置的圆点大小和位置偏移
+            // Use configured dot size and position offset
             val dotSize = settings.dotSize
             val x = location.x + settings.offsetX
             val y = location.y + tabLabel.height / 2 - dotSize / 2 + settings.offsetY
@@ -55,5 +66,8 @@ class ActiveDotUI(private val project: Project) : JComponent() {
             g2d.dispose()
         }
     }
-}
 
+    fun dispose() {
+        breathingService.removeListener(breathingListener)
+    }
+}

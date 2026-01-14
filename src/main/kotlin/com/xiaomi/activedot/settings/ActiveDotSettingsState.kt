@@ -18,6 +18,12 @@ class ActiveDotSettingsState : PersistentStateComponent<ActiveDotSettingsState> 
     var offsetX: Int = 6
     var offsetY: Int = 0
 
+    // Breathing light settings
+    var breathingLightEnabled: Boolean = false
+    var breathingMode: String = "fixed"  // "fixed", "random", "custom"
+    var breathingFrequency: Int = 5  // 1-10
+    var customColors: List<String> = listOf("ff0000", "00ff00", "0000ff", "ffff00")
+
     override fun getState(): ActiveDotSettingsState {
         return this
     }

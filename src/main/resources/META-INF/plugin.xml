@@ -10,6 +10,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.xiaomi.activedot.settings.ActiveDotSettingsState"/>
+        <applicationService serviceImplementation="com.xiaomi.activedot.service.BreathingEffectService"/>
         <postStartupActivity implementation="com.xiaomi.activedot.startup.ActiveDotStartupActivity"/>
         <applicationConfigurable parentId="appearance" instance="com.xiaomi.activedot.settings.ActiveDotSettingsConfigurable" id="com.xiaomi.activedot.settings.ActiveDotSettingsConfigurable" displayName="Active Tab Dot"/>
         <fileEditorManagerListener implementation="com.xiaomi.activedot.listeners.ActiveDotTabListener"/>

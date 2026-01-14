@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Breathing Light Effect**: Add breathing light feature with smooth color transitions and adjustable brightness
+  - **Enable/Disable**: Toggle breathing light on/off (default: off)
+  - **Three Modes**:
+    - Fixed: Single color with breathing effect
+    - Random: Random colors with smooth transitions
+    - Custom: Cycle through 4 custom colors with smooth transitions
+  - **Frequency Control**: Adjustable breathing speed (1-10)
+  - Custom color selectors appear inline when Custom mode is selected
+
+## [1.0.5] - 2026-01-07
+
+### Added
 - Add logo icon.
 
 ## [1.0.4] - 2026-01-05
