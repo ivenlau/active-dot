@@ -27,18 +27,27 @@ class BreathingEffectService : Disposable {
 
     init {
         // Start the animation loop
+        // Optimized to ~10 FPS (100ms) to minimize CPU usage
         scheduledTask = executor.scheduleWithFixedDelay(
             { notifyRepaint() },
             0,
-            16,  // ~60 FPS
+            100,
             TimeUnit.MILLISECONDS
         )
     }
 
     private fun notifyRepaint() {
+        // Performance Fix: Check if breathing is enabled before dispatching to EDT.
+        // This prevents flooding the Event Dispatch Thread when the feature is disabled.
+        if (!ActiveDotSettingsState.getInstance().breathingLightEnabled) {
+            return
+        }
+
         ApplicationManager.getApplication().invokeLater {
             synchronized(listeners) {
-                listeners.forEach { it.onBreathingColorChanged(getCurrentBreathingColor()) }
+                if (listeners.isNotEmpty()) {
+                    listeners.forEach { it.onBreathingColorChanged(getCurrentBreathingColor()) }
+                }
             }
         }
     }

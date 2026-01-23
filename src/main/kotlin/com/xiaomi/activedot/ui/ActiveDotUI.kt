@@ -20,8 +20,10 @@ class ActiveDotUI(private val project: Project) : JComponent() {
 
     private val breathingListener = object : BreathingEffectService.Listener {
         override fun onBreathingColorChanged(color: Color?) {
-            currentBreathingColor = color
-            repaint()
+            if (currentBreathingColor != color) {
+                currentBreathingColor = color
+                repaint()
+            }
         }
     }
 
@@ -35,6 +37,7 @@ class ActiveDotUI(private val project: Project) : JComponent() {
     }
 
     override fun paintComponent(g: Graphics) {
+        if (!isShowing) return
         super.paintComponent(g)
 
         val fileEditorManager = FileEditorManagerEx.getInstanceEx(project)
@@ -54,7 +57,11 @@ class ActiveDotUI(private val project: Project) : JComponent() {
             g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE)
 
             // Use breathing color if enabled, otherwise use the configured dot color
-            val dotColor = currentBreathingColor ?: Color.decode("#" + settings.dotColor)
+            val dotColor = if (settings.breathingLightEnabled) {
+                currentBreathingColor ?: Color.decode("#" + settings.dotColor)
+            } else {
+                Color.decode("#" + settings.dotColor)
+            }
             g2d.color = dotColor
 
             // Use configured dot size and position offset
@@ -62,6 +69,8 @@ class ActiveDotUI(private val project: Project) : JComponent() {
             val x = location.x + settings.offsetX
             val y = location.y + tabLabel.height / 2 - dotSize / 2 + settings.offsetY
             g2d.fillOval(x, y, dotSize, dotSize)
+        } catch (e: Exception) {
+            // Prevent painting errors from breaking the UI
         } finally {
             g2d.dispose()
         }
